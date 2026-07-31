@@ -1,0 +1,41 @@
+/* 设计 token — 取色基准:用户样例图(2026-07-17)。冻结后回写 src/config/theme.js */
+:root {
+  /* 品牌 */
+  --brand: #2E6BE8;
+  --brand-deep: #1F55C8;
+  --brand-weak: #EAF1FE;
+  --brand-grad: linear-gradient(135deg, #3D7BFA, #2E6BE8);
+
+  /* 三段色(上游蓝/中游绿/下游紫,语义沿用 PC) */
+  --up: #3D7BFA;      --up-soft: #EDF3FF;   --up-ink: #2B5FD9;
+  --up-grad: linear-gradient(160deg, #4A86FB, #2E6BE8);
+  --mid: #22B573;     --mid-soft: #EAF8F1;  --mid-ink: #189A60;
+  --mid-grad: linear-gradient(160deg, #35C687, #1CA565);
+  --down: #8A7CF6;    --down-soft: #F1EFFE; --down-ink: #6C5CE7;
+  --down-grad: linear-gradient(160deg, #9A8CFA, #7B6BE8);
+
+  /* 中性色 */
+  --bg: #F4F6FA;
+  --card: #FFFFFF;
+  --line: #EBEEF4;
+  --line-strong: #DDE3EC;
+  --t1: #171C26;
+  --t2: #5A6472;
+  --t3: #98A1B3;
+
+  /* 语义 */
+  --warn: #E6912E;          /* 停更/提示徽标 */
+  --warn-soft: #FDF3E5;
+  --pct-up: #E33B3B;        /* 备用,本版不使用 */
+  --pct-down: #12A668;      /* 备用,本版不使用 */
+
+  /* 圆角/间距/字号 */
+  --r-lg: 16px; --r-md: 12px; --r-sm: 8px; --r-pill: 999px;
+  --pad-page: 16px;
+  --fs-title: 17px; --fs-body: 15px; --fs-sub: 13px; --fs-cap: 11px;
+
+  --shadow-card: 0 1px 3px rgba(23,28,38,.04), 0 4px 14px rgba(23,28,38,.05);
+  --shadow-sheet: 0 -8px 32px rgba(23,28,38,.14);
+
+  --font: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}

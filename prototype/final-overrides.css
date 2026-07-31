@@ -1,0 +1,63 @@
+/* Final cross-page corrections applied after the reference-specific styles. */
+.statusbar {
+  height: 31px;
+}
+
+.header {
+  min-height: 52px;
+  justify-content: space-between;
+  padding-block: 5px 7px;
+}
+
+.header .brand-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+}
+
+.header .brand-mark .icon {
+  font-size: 18px;
+}
+
+.header-copy strong {
+  font-size: 16px;
+}
+
+.header .icon-button,
+.header .icon-button.quiet {
+  width: 36px;
+  height: 36px;
+}
+
+.hero-search span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chain-title + .icon-button {
+  margin-left: auto;
+}
+
+/* The reference uses the grab handle as the close affordance. Keep the
+   existing close button accessible and place its hit target over the handle. */
+.node-detail-sheet .sheet-close {
+  left: 50%;
+  right: auto;
+  top: 0;
+  width: 56px;
+  height: 18px;
+  display: block;
+  transform: translateX(-50%);
+  border: 0;
+  color: transparent;
+  background: transparent;
+  opacity: 0;
+}
+
+@media (max-width: 380px) {
+  .header {
+    padding-inline: 10px;
+  }
+}

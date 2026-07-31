@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>飞研产业研究平台 · 设计原型</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="stage"><div class="phone" id="phone">
+  <div class="statusbar"><span>9:41</span><span style="letter-spacing:2px">▮▮▮ ⌁ ▉</span></div>
+  <div class="hd" id="hd"></div>
+  <div id="seg-host"></div>
+  <div class="content" id="content"></div>
+  <div class="tabbar" id="tabbar"></div>
+</div></div>
+
+<script src="robot-source.js"></script>
+<script src="robot-adapter.js"></script>
+<script src="mock-data.js"></script>
+<script src="six-chain-runtime.js"></script>
+<script>
+// —— 极简 shell:header + tabbar + 路由 + 共享工具。页面逻辑一律在 pages/*.js ——
+window.UI = {
+  icons: {
+    logo: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M7 11l10-4M7 13l10 4"/></svg>',
+    chev: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>',
+    right: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>',
+    search: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+    back: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+    home: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>',
+    graph: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="5" cy="12" r="2.4"/><circle cx="19" cy="5.5" r="2.4"/><circle cx="19" cy="18.5" r="2.4"/><path d="M7.2 11l9.4-4.4M7.2 13l9.4 4.4"/></svg>',
+    company: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 21V5.5A1.5 1.5 0 015.5 4h7A1.5 1.5 0 0114 5.5V21M14 9h4.5A1.5 1.5 0 0120 10.5V21M2.5 21h19"/><path d="M7 8h3M7 12h3M7 16h3"/></svg>',
+    chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 4v16h16"/><path d="M7.5 14.5l3.5-4 3 2.5 4.5-6"/></svg>',
+    me: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.6-3.4 4.3-5 7.5-5s5.9 1.6 7.5 5"/></svg>'
+  },
+  // 首字头像:同名同色
+  avatarColors: ['#3D7BFA', '#22B573', '#8A7CF6', '#E6912E', '#2AA6A2', '#D46BA3'],
+  avatar(name) {
+    const c = this.avatarColors[[...name].reduce((s, ch) => s + ch.charCodeAt(0), 0) % this.avatarColors.length]
+    return `<div class="co-avatar" style="background:${c}">${name.slice(0, 1)}</div>`
+  },
+  levelBadge(level) {
+    return `<span class="badge ${level === '代表' ? 'badge-level' : 'badge-level-weak'}">${level}</span>`
+  },
+  disclaimer() {
+    const M = window.MOCK
+    return `<div class="disclaimer">${M.COMPLIANCE.DISCLAIMER}<br>${M.COMPLIANCE.SOURCE_LINE} · 数据截至 ${M.meta.dataAsOf}</div>`
+  },
+  // 迷你走势线(canvas)。color 缺省品牌蓝;fill=true 画面积
+  sparkline(canvas, series, color = '#2E6BE8', fill = true) {
+    const dpr = window.devicePixelRatio || 1
+    const w = canvas.clientWidth, h = canvas.clientHeight
+    canvas.width = w * dpr; canvas.height = h * dpr
+    const ctx = canvas.getContext('2d'); ctx.scale(dpr, dpr)
+    const min = Math.min(...series), max = Math.max(...series), pad = 3
+    const x = i => pad + i * (w - 2 * pad) / (series.length - 1)
+    const y = v => h - pad - (v - min) / ((max - min) || 1) * (h - 2 * pad)
+    ctx.beginPath()
+    series.forEach((v, i) => i ? ctx.lineTo(x(i), y(v)) : ctx.moveTo(x(i), y(v)))
+    ctx.strokeStyle = color; ctx.lineWidth = 1.6; ctx.lineJoin = 'round'; ctx.stroke()
+    if (fill) {
+      ctx.lineTo(x(series.length - 1), h); ctx.lineTo(x(0), h); ctx.closePath()
+      const g = ctx.createLinearGradient(0, 0, 0, h)
+      g.addColorStop(0, color + '33'); g.addColorStop(1, color + '00')
+      ctx.fillStyle = g; ctx.fill()
+    }
+  }
+}
+
+window.UI.toast = function (message, duration = 2200) {
+  const old = document.querySelector('.pg-hm-toast[data-runtime-toast]')
+  if (old) old.remove()
+  const toast = document.createElement('div')
+  toast.className = 'pg-hm-toast'
+  toast.dataset.runtimeToast = '1'
+  toast.textContent = message
+  document.getElementById('phone').appendChild(toast)
+  setTimeout(() => toast.remove(), duration)
+}
+
+window.app = (() => {
+  let current = 'home', params = {}
+  let routeDepth = 0
+  const scrollPositions = new Map()
+
+  function header() {
+    const M = window.MOCK
+    const chain = M.chains.find(c => c.key === M.currentChainKey)
+    const isHome = current === 'home'
+    const isSearch = current === 'search'
+    const showChain = ['overview', 'atlas', 'graph', 'company', 'indicator'].includes(current)
+    const headerEl = document.getElementById('hd')
+    if (isHome) {
+      // 首页顶部品牌与搜索入口按本轮最高指示保持原样。
+      headerEl.innerHTML = `
+        <div class="hd-logo">${UI.icons.logo}</div>
+        <div class="hd-title">${M.platform.brand}</div>
+        <div class="hd-spacer"></div>
+        <div class="hd-search" onclick="app.go('search')">${UI.icons.search}</div>`
+    } else if (isSearch) {
+      headerEl.innerHTML = `
+        <button class="hd-back" onclick="app.back()" aria-label="返回">${UI.icons.back}</button>
+        <div class="hd-title">搜索</div>
+        <div class="hd-spacer"></div>`
+    } else {
+      headerEl.innerHTML = `
+        <button class="hd-back" onclick="app.back()" aria-label="返回">${UI.icons.back}</button>
+        ${showChain
+          ? `<div class="hd-chain-title">${chain.title}产业链</div>
+             <div class="hd-capsule" aria-label="产业链快捷操作">
+               <button class="hd-more" onclick="app.chainPop()" aria-label="切换产业链"><span></span><span></span><span></span></button>
+               <i aria-hidden="true"></i>
+               <button class="hd-home-orb" onclick="app.go('home')" aria-label="返回首页">${UI.icons.home}</button>
+             </div>`
+          : `<div class="hd-title">${M.platform.brand}</div><div class="hd-spacer"></div>`}`
+    }
+    // 产业链详情只有“一图看懂 / 交互图谱”两个页内页签。
+    document.getElementById('seg-host').innerHTML = ['overview', 'atlas'].includes(current) ? `
+      <div class="seg">
+        <div class="seg-item ${current === 'overview' ? 'on' : ''}" onclick="app.go('overview')">一图看懂</div>
+        <div class="seg-item ${current === 'atlas' ? 'on' : ''}" onclick="app.go('atlas')">交互图谱</div>
+      </div>` : ''
+  }
+
+  function tabbar() {
+    const tabbar = document.getElementById('tabbar')
+    tabbar.innerHTML = ''
+    tabbar.hidden = true
+  }
+
+  // —— hash 深链:#/page?k=v;刷新可恢复,浏览器前进/后退可用 ——
+  function toHash(page, p) {
+    const q = Object.entries(p || {}).filter(([, v]) => v !== undefined && v !== null && v !== '')
+      .map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&')
+    return '#/' + page + (q ? '?' + q : '')
+  }
+  function fromHash() {
+    const h = location.hash.replace(/^#\/?/, '')
+    if (!h) return null
+    const [page, qs] = h.split('?')
+    if (!window['Page_' + page]) return null
+    const p = {}
+    if (qs) qs.split('&').forEach(kv => { const i = kv.indexOf('='); if (i > 0) p[kv.slice(0, i)] = decodeURIComponent(kv.slice(i + 1)) })
+    return { page, p }
+  }
+  let _lastHash = ''
+  function routeKey(page = current, p = params) {
+    return toHash(page, p)
+  }
+  function saveScroll() {
+    const el = document.getElementById('content')
+    if (el) scrollPositions.set(routeKey(), el.scrollTop)
+  }
+  window.addEventListener('hashchange', async () => {
+    if (location.hash === _lastHash) return // 自己 go() 写入的,不重复渲染
+    const r = fromHash()
+    if (!r) return
+    try {
+      saveScroll()
+      if (r.p.ck && r.p.ck !== window.MOCK.currentChainKey) await window.MOCK.selectChain(r.p.ck)
+      routeDepth = Math.max(0, routeDepth - 1)
+      current = r.page; params = r.p; _lastHash = location.hash; renderCurrent()
+    } catch (error) {
+      UI.toast(`切换失败：${error.message}`)
+      _lastHash = toHash(current, { ...params, ck: window.MOCK.currentChainKey })
+      location.hash = _lastHash
+    }
+  })
+
+  function renderCurrent() {
+    const mod = window['Page_' + current]
+    const el = document.getElementById('content')
+    header(); tabbar()
+    if (mod) mod.render(el, { go, selectChain, params })
+    else el.innerHTML = '<div class="empty"><div class="ico">🧩</div>页面模块未加载:' + current + '</div>'
+    const restoreTop = scrollPositions.get(routeKey()) || 0
+    requestAnimationFrame(() => {
+      el.scrollTop = Math.min(restoreTop, Math.max(0, el.scrollHeight - el.clientHeight))
+    })
+  }
+
+  function go(page, p = {}) {
+    saveScroll()
+    if (['overview', 'atlas', 'graph', 'company', 'indicator'].includes(page) && !p.ck) p = { ...p, ck: window.MOCK.currentChainKey }
+    current = page; params = p
+    _lastHash = toHash(page, p)
+    if (location.hash !== _lastHash) {
+      routeDepth += 1
+      location.hash = _lastHash // hashchange 异步触发,用 _lastHash 去重
+    }
+    renderCurrent()
+  }
+
+  function back() {
+    const fallback = current === 'graph' ? 'atlas' : 'home'
+    if (routeDepth > 0) {
+      history.back()
+      return
+    }
+    go(fallback)
+  }
+
+  async function selectChain(key, page = current, p = {}) {
+    try {
+      await window.MOCK.selectChain(key)
+      go(page, { ...p, ck: key })
+      return true
+    } catch (error) {
+      UI.toast(`“${window.MOCK.chains.find(item => item.key === key)?.title || key}”加载失败：${error.message}`)
+      return false
+    }
+  }
+
+  function chainPop() {
+    const M = window.MOCK
+    const pop = document.createElement('div')
+    pop.className = 'chain-pop'
+    pop.innerHTML = `<div class="chain-pop-card">${M.chains.filter(c => c.live).map(c => `
+      <div class="chain-pop-item ${c.key === M.currentChainKey ? 'on' : ''}" data-k="${c.key}">
+        <span>${c.title}</span><span class="sub">${c.nodeCount} 环节</span>
+      </div>`).join('')}</div>`
+    pop.onclick = async e => {
+      const k = e.target.closest('.chain-pop-item')?.dataset.k
+      if (!k) { pop.remove(); return }
+      pop.remove()
+      await selectChain(k, current, params)
+    }
+    document.getElementById('phone').appendChild(pop)
+  }
+
+  // 知情同意:每次会话只弹一次(sessionStorage)
+  function consent() {
+    let done = false
+    try { done = sessionStorage.getItem('consent-ok') === '1' } catch (e) {}
+    if (done) return
+    const M = window.MOCK
+    const d = document.createElement('div')
+    d.className = 'consent'
+    d.innerHTML = `<div class="consent-card"><h3>${M.COMPLIANCE.CONSENT.title}</h3><p>${M.COMPLIANCE.CONSENT.body}</p><button>${M.COMPLIANCE.CONSENT.confirm}</button></div>`
+    d.querySelector('button').onclick = () => { try { sessionStorage.setItem('consent-ok', '1') } catch (e) {} d.remove() }
+    document.getElementById('phone').appendChild(d)
+  }
+
+  window.addEventListener('DOMContentLoaded', async () => {
+    const el = document.getElementById('content')
+    el.innerHTML = '<div class="empty"><div class="ico">⌛</div>正在加载六链目录与机器人产业链…</div>'
+    try {
+      await window.MOCK.initialize()
+      const r = fromHash()
+      if (r) {
+        if (r.p.ck && r.p.ck !== window.MOCK.currentChainKey) await window.MOCK.selectChain(r.p.ck)
+        current = r.page; params = r.p
+      }
+      _lastHash = toHash(current, params)
+      renderCurrent(); consent()
+    } catch (error) {
+      document.getElementById('hd').innerHTML = '<div class="hd-title">飞研产业研究平台</div>'
+      el.innerHTML = `<div class="empty"><div class="ico">!</div>六链数据加载失败<br><span class="fs12 t3">${error.message}</span><br><button class="go" id="runtime-retry" style="margin-top:12px">重新加载</button></div>`
+      document.getElementById('runtime-retry').onclick = () => location.reload()
+    }
+  })
+  return { go, back, selectChain, chainPop }
+})()
+</script>
+<script src="node-insights.js"></script>
+<script src="research-config.js"></script>
+<script src="chain-market-index.js"></script>
+<script src="pages/home.js"></script>
+<script src="pages/graph.js"></script>
+<script src="pages/overview.js"></script>
+<script src="pages/company.js"></script>
+<script src="pages/indicator.js"></script>
+<script src="pages/search.js"></script>
+<script src="pages/search-module.js"></script>
+</body>
+</html>
