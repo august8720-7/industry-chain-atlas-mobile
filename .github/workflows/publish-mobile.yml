@@ -1,0 +1,26 @@
+name: 发布移动端完整版本
+
+on:
+  push:
+    paths:
+      - 'industry-chain-atlas-mobile-release-WSKZyH.zip.part-*'
+      - '.github/workflows/publish-mobile.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Expand release package
+        run: |
+          cat 'industry-chain-atlas-mobile-release-WSKZyH.zip.part-'* > /tmp/mobile-release.zip
+          unzip -q -o /tmp/mobile-release.zip -d .
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md server.mjs prototype
+          git commit -m '发布移动端完整版本'
+          git push
