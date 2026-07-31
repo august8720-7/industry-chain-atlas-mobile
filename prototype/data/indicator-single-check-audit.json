@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "feiyan-ifind-single-check-audit-v1",
+  "checkedAt": "2026-07-22T15:30:00-04:00",
+  "source": "iFinD EDB MCP",
+  "items": [
+    {
+      "sourceId": "S004221944",
+      "returnedIndexId": "S004221944",
+      "name": "多晶硅组件:均价",
+      "status": "fetched",
+      "pointCount": 174,
+      "latestPeriod": "2023-05-03",
+      "latestValue": 0.186,
+      "checkedAt": "2026-07-22T15:27:00-04:00"
+    },
+    {
+      "sourceId": "S006552107",
+      "returnedIndexId": "S006552107",
+      "name": "黄金价格:韩元",
+      "status": "fetched",
+      "pointCount": 6575,
+      "latestPeriod": "2025-03-14",
+      "latestValue": 4326659.94,
+      "checkedAt": "2026-07-22T15:28:00-04:00"
+    },
+    {
+      "sourceId": "S019833314",
+      "returnedIndexId": "S019833314",
+      "name": "产量:高纯氢:当周值",
+      "status": "fetched",
+      "pointCount": 70,
+      "latestPeriod": "2023-08-11",
+      "latestValue": 117213,
+      "checkedAt": "2026-07-22T15:29:00-04:00"
+    }
+  ]
+}

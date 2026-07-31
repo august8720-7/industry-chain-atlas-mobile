@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "feiyan-chain-market-index-constituents-v1",
+  "asOf": "2026-07-29",
+  "source": {
+    "workbook": "C:\\Users\\august\\Desktop\\6条产业链底稿最新版_修复存储芯片方向.xlsx",
+    "workbookSha256": "a2a05c22acd17bcf6064da7dd59a561da1de72241ba827476e8c5223216852db",
+    "derivedPackage": "prototype/data/catalog.json"
+  },
+  "eligibility": {
+    "market": "A股（沪深北）",
+    "required": [
+      "底稿节点公司映射中存在该公司",
+      "主营业务对当前产业链有实质暴露，或为该细分公认龙头",
+      "证券在基准日可正常取得行情与总股本"
+    ],
+    "excluded": [
+      "ST、*ST、退市或长期停牌证券",
+      "未上市公司与境外证券",
+      "仅因同名缩写或通用词误命中的公司",
+      "业务占比较低且不属于细分龙头的概念公司"
+    ]
+  },
+  "chains": [
+    {
+      "key": "robot",
+      "title": "机器人",
+      "constituents": [
+        {"code": "300124.SZ", "name": "汇川技术"},
+        {"code": "002747.SZ", "name": "埃斯顿"},
+        {"code": "300024.SZ", "name": "机器人"},
+        {"code": "688165.SH", "name": "埃夫特"},
+        {"code": "300607.SZ", "name": "拓斯达"},
+        {"code": "603486.SH", "name": "科沃斯"},
+        {"code": "688169.SH", "name": "石头科技"},
+        {"code": "689009.SH", "name": "九号公司"},
+        {"code": "002698.SZ", "name": "博实股份"},
+        {"code": "688017.SH", "name": "绿的谐波"},
+        {"code": "002896.SZ", "name": "中大力德"},
+        {"code": "002050.SZ", "name": "三花智控"},
+        {"code": "601689.SH", "name": "拓普集团"}
+      ]
+    },
+    {
+      "key": "aerospace",
+      "title": "航空航天",
+      "constituents": [
+        {"code": "600760.SH", "name": "中航沈飞"},
+        {"code": "000768.SZ", "name": "中航西飞"},
+        {"code": "302132.SZ", "name": "中航成飞"},
+        {"code": "600038.SH", "name": "中直股份"},
+        {"code": "600893.SH", "name": "航发动力"},
+        {"code": "000738.SZ", "name": "航发控制"},
+        {"code": "600372.SH", "name": "中航机载"},
+        {"code": "600765.SH", "name": "中航重机"},
+        {"code": "600879.SH", "name": "航天电子"},
+        {"code": "002389.SZ", "name": "航天彩虹"},
+        {"code": "688297.SH", "name": "中无人机"},
+        {"code": "688311.SH", "name": "盟升电子"},
+        {"code": "688563.SH", "name": "航材股份"},
+        {"code": "300775.SZ", "name": "三角防务"},
+        {"code": "300777.SZ", "name": "中简科技"},
+        {"code": "002179.SZ", "name": "中航光电"},
+        {"code": "600862.SH", "name": "中航高科"}
+      ]
+    },
+    {
+      "key": "gold",
+      "title": "黄金",
+      "constituents": [
+        {"code": "601899.SH", "name": "紫金矿业"},
+        {"code": "600547.SH", "name": "山东黄金"},
+        {"code": "600489.SH", "name": "中金黄金"},
+        {"code": "000975.SZ", "name": "山金国际"},
+        {"code": "600988.SH", "name": "赤峰黄金"},
+        {"code": "002155.SZ", "name": "湖南黄金"},
+        {"code": "601069.SH", "name": "西部黄金"}
+      ],
+      "reviewNotes": [
+        "登云股份黄金相关收入占比仅5.8435%，未纳入。",
+        "赤峰黄金矿产金收入占比89.7172%，纳入。"
+      ]
+    },
+    {
+      "key": "silver",
+      "title": "白银",
+      "constituents": [
+        {"code": "601212.SH", "name": "白银有色"},
+        {"code": "600531.SH", "name": "豫光金铅"},
+        {"code": "300842.SZ", "name": "帝科股份"},
+        {"code": "688503.SH", "name": "聚和材料"},
+        {"code": "002079.SZ", "name": "苏州固锝"},
+        {"code": "603045.SH", "name": "福达合金"},
+        {"code": "688379.SH", "name": "华光新材"}
+      ],
+      "reviewNotes": [
+        "粤桂股份银粉收入占比7.6100%，未纳入。",
+        "博迁新材银粉收入占比4.5689%，未纳入。"
+      ]
+    },
+    {
+      "key": "compute",
+      "title": "算力",
+      "constituents": [
+        {"code": "688041.SH", "name": "海光信息"},
+        {"code": "300474.SZ", "name": "景嘉微"},
+        {"code": "002049.SZ", "name": "紫光国微"},
+        {"code": "601138.SH", "name": "工业富联"},
+        {"code": "000977.SZ", "name": "浪潮信息"},
+        {"code": "603019.SH", "name": "中科曙光"},
+        {"code": "000938.SZ", "name": "紫光股份"},
+        {"code": "002463.SZ", "name": "沪电股份"},
+        {"code": "002916.SZ", "name": "深南电路"},
+        {"code": "300308.SZ", "name": "中际旭创"},
+        {"code": "300502.SZ", "name": "新易盛"},
+        {"code": "300394.SZ", "name": "天孚通信"},
+        {"code": "000988.SZ", "name": "华工科技"},
+        {"code": "002281.SZ", "name": "光迅科技"},
+        {"code": "301165.SZ", "name": "锐捷网络"},
+        {"code": "688702.SH", "name": "盛科通信"},
+        {"code": "002335.SZ", "name": "科华数据"},
+        {"code": "300499.SZ", "name": "高澜股份"},
+        {"code": "300442.SZ", "name": "润泽科技"},
+        {"code": "300913.SZ", "name": "兆龙互连"}
+      ],
+      "reviewNotes": [
+        "排除因ADC同名误命中的医药公司，以及ST证券。",
+        "成分覆盖芯片、服务器、交换网络、高速互连、光通信、液冷和数据中心。"
+      ]
+    },
+    {
+      "key": "storage_chip",
+      "title": "存储芯片",
+      "constituents": [
+        {"code": "688525.SH", "name": "佰维存储"},
+        {"code": "001309.SZ", "name": "德明利"},
+        {"code": "301308.SZ", "name": "江波龙"},
+        {"code": "300223.SZ", "name": "北京君正"},
+        {"code": "688110.SH", "name": "东芯股份"},
+        {"code": "688123.SH", "name": "聚辰股份"},
+        {"code": "688766.SH", "name": "普冉股份"},
+        {"code": "603986.SH", "name": "兆易创新"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "feiyan-chain-market-index-manifest-v1",
+  "generatedAt": "2026-07-30",
+  "dataAsOf": "2026-07-29",
+  "source": "iFinD MCP（A股日频行情、股本股东数据）",
+  "visibleFields": [
+    "交易日期",
+    "开盘",
+    "最高",
+    "最低",
+    "收盘",
+    "涨跌",
+    "涨跌幅",
+    "成交量(万股)",
+    "成交额(亿元)",
+    "5日涨跌幅"
+  ],
+  "methodology": {
+    "weighting": "总股本加权",
+    "formula": "Index_t = sum(Price_i,t * TotalShares_i) / Divisor",
+    "baseDate": "2026-07-20",
+    "baseValue": 1000,
+    "totalSharesAsOf": "2026-07-29",
+    "rebalance": "原型期固定股本；生产版在股本变动生效日调整除数",
+    "universe": "A股核心公司，排除ST/*ST/退市、境外股、未上市及低实质暴露概念公司"
+  },
+  "chains": [
+    {
+      "key": "robot",
+      "title": "机器人",
+      "file": "series/robot.json",
+      "constituents": 13,
+      "tradingDays": 8,
+      "latest": {
+        "date": "20260729",
+        "open": 977.9622531813093,
+        "high": 1016.198737956776,
+        "low": 961.6974192871485,
+        "close": 999.5460085854507,
+        "change": 22.677564369913057,
+        "changePct": 2.3214553099956126,
+        "fiveDayPct": -2.2033648643764114,
+        "volumeWanShares": 37047.2638,
+        "amountYuan": 16424990000
+      },
+      "topWeights": [
+        {
+          "code": "300124.SZ",
+          "name": "汇川技术",
+          "weightPct": 25.8109303176844
+        },
+        {
+          "code": "002050.SZ",
+          "name": "三花智控",
+          "weightPct": 23.452460643091445
+        },
+        {
+          "code": "601689.SH",
+          "name": "拓普集团",
+          "weightPct": 12.256093180786646
+        },
+        {
+          "code": "688017.SH",
+          "name": "绿的谐波",
+          "weightPct": 8.046362256678517
+        },
+        {
+          "code": "603486.SH",
+          "name": "科沃斯",
+          "weightPct": 5.431507310144895
+        }
+      ]
+    },
+    {
+      "key": "aerospace",
+      "title": "航空航天",
+      "file": "series/aerospace.json",
+      "constituents": 17,
+      "tradingDays": 8,
+      "latest": {
+        "date": "20260729",
+        "open": 1023.2449234792812,
+        "high": 1048.7574234345743,
+        "low": 1017.2970373365207,
+        "close": 1043.681332372376,
+        "change": 21.56974098806984,
+        "changePct": 2.1103117477472955,
+        "fiveDayPct": 2.594910323443833,
+        "volumeWanShares": 32413.075600000004,
+        "amountYuan": 7558830335
+      },
+      "topWeights": [
+        {
+          "code": "302132.SZ",
+          "name": "中航成飞",
+          "weightPct": 19.639380319401432
+        },
+        {
+          "code": "600760.SH",
+          "name": "中航沈飞",
+          "weightPct": 15.636975287753302
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "weightPct": 11.990344824213167
+        },
+        {
+          "code": "002179.SZ",
+          "name": "中航光电",
+          "weightPct": 8.895183714539662
+        },
+        {
+          "code": "000768.SZ",
+          "name": "中航西飞",
+          "weightPct": 7.338146477356779
+        }
+      ]
+    },
+    {
+      "key": "gold",
+      "title": "黄金",
+      "file": "series/gold.json",
+      "constituents": 7,
+      "tradingDays": 8,
+      "latest": {
+        "date": "20260729",
+        "open": 1089.619413622493,
+        "high": 1114.531120324505,
+        "low": 1070.7619032194343,
+        "close": 1107.3433040697696,
+        "change": 18.950405843510907,
+        "changePct": 1.7411364842966348,
+        "fiveDayPct": -0.35439919995943203,
+        "volumeWanShares": 51189.6077,
+        "amountYuan": 14525630000
+      },
+      "topWeights": [
+        {
+          "code": "601899.SH",
+          "name": "紫金矿业",
+          "weightPct": 66.89202778783839
+        },
+        {
+          "code": "600547.SH",
+          "name": "山东黄金",
+          "weightPct": 9.858195197734904
+        },
+        {
+          "code": "600489.SH",
+          "name": "中金黄金",
+          "weightPct": 8.245628904508067
+        },
+        {
+          "code": "600988.SH",
+          "name": "赤峰黄金",
+          "weightPct": 5.629779266547403
+        },
+        {
+          "code": "000975.SZ",
+          "name": "山金国际",
+          "weightPct": 4.870303772895653
+        }
+      ]
+    },
+    {
+      "key": "silver",
+      "title": "白银",
+      "file": "series/silver.json",
+      "constituents": 7,
+      "tradingDays": 8,
+      "latest": {
+        "date": "20260729",
+        "open": 1032.5182718457138,
+        "high": 1060.749262432768,
+        "low": 993.4475434825696,
+        "close": 1041.3031765134187,
+        "change": 8.752836963904883,
+        "changePct": 0.8476910644108271,
+        "fiveDayPct": -1.6051132499200649,
+        "volumeWanShares": 24009.1906,
+        "amountYuan": 3182340000
+      },
+      "topWeights": [
+        {
+          "code": "601212.SH",
+          "name": "白银有色",
+          "weightPct": 39.19609098533527
+        },
+        {
+          "code": "688503.SH",
+          "name": "聚和材料",
+          "weightPct": 16.733403305022506
+        },
+        {
+          "code": "600531.SH",
+          "name": "豫光金铅",
+          "weightPct": 15.166557322964348
+        },
+        {
+          "code": "002079.SZ",
+          "name": "苏州固锝",
+          "weightPct": 8.842601344158322
+        },
+        {
+          "code": "300842.SZ",
+          "name": "帝科股份",
+          "weightPct": 8.324237262518505
+        }
+      ]
+    },
+    {
+      "key": "compute",
+      "title": "算力",
+      "file": "series/compute.json",
+      "constituents": 20,
+      "tradingDays": 8,
+      "latest": {
+        "date": "20260729",
+        "open": 946.1051078045991,
+        "high": 970.6635812750244,
+        "low": 891.5515159219138,
+        "close": 941.0168438831683,
+        "change": -3.628570029347088,
+        "changePct": -0.3841197952063613,
+        "fiveDayPct": -11.331480844981257,
+        "volumeWanShares": 119551.61900000002,
+        "amountYuan": 161362060000
+      },
+      "topWeights": [
+        {
+          "code": "601138.SH",
+          "name": "工业富联",
+          "weightPct": 22.08058808734497
+        },
+        {
+          "code": "300308.SZ",
+          "name": "中际旭创",
+          "weightPct": 21.43352514443482
+        },
+        {
+          "code": "688041.SH",
+          "name": "海光信息",
+          "weightPct": 12.718780010299986
+        },
+        {
+          "code": "300502.SZ",
+          "name": "新易盛",
+          "weightPct": 11.315131096230244
+        },
+        {
+          "code": "002916.SZ",
+          "name": "深南电路",
+          "weightPct": 4.147475201005817
+        }
+      ]
+    },
+    {
+      "key": "storage_chip",
+      "title": "存储芯片",
+      "file": "series/storage_chip.json",
+      "constituents": 8,
+      "tradingDays": 8,
+      "latest": {
+        "date": "20260729",
+        "open": 861.606099853563,
+        "high": 875.9476079696817,
+        "low": 801.6738879322461,
+        "close": 854.7545351545641,
+        "change": -18.14522605100126,
+        "changePct": -2.0787296385487375,
+        "fiveDayPct": -19.18538805168494,
+        "volumeWanShares": 28421.555500000002,
+        "amountYuan": 72712040000
+      },
+      "topWeights": [
+        {
+          "code": "603986.SH",
+          "name": "兆易创新",
+          "weightPct": 33.98362551426422
+        },
+        {
+          "code": "301308.SZ",
+          "name": "江波龙",
+          "weightPct": 18.551490482593422
+        },
+        {
+          "code": "688525.SH",
+          "name": "佰维存储",
+          "weightPct": 13.291874904446017
+        },
+        {
+          "code": "001309.SZ",
+          "name": "德明利",
+          "weightPct": 10.700476846860111
+        },
+        {
+          "code": "300223.SZ",
+          "name": "北京君正",
+          "weightPct": 8.01436067704105
+        }
+      ]
+    }
+  ],
+  "audit": {
+    "expectedChains": 6,
+    "completeChains": 6,
+    "expectedComponentDailyRows": 576,
+    "actualComponentDailyRows": 576,
+    "coverageErrors": 0
+  }
+}

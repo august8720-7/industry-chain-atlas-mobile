@@ -1,0 +1,645 @@
+{
+  "schemaVersion": "feiyan-path-edge-audit-v1",
+  "checkedAt": "2026-07-22T14:56:29-04:00",
+  "source": {
+    "file": "C:\\Users\\august\\Desktop\\6条产业链底稿最新版_修复存储芯片方向.xlsx",
+    "sha256": "a2a05c22acd17bcf6064da7dd59a561da1de72241ba827476e8c5223216852db"
+  },
+  "rule": "只统计同一 Excel 图谱行中相邻步骤且当前步骤关系非“包含”的真实 PathEdge。",
+  "chains": [
+    {
+      "key": "robot",
+      "title": "机器人",
+      "sheet": "图谱_机器人",
+      "pathRows": 289,
+      "lengthDistribution": {
+        "2": 176,
+        "3": 92,
+        "4": 12,
+        "5": 9
+      },
+      "relationCounts": {
+        "上游原材料": 165,
+        "上游技术服务": 27,
+        "上游生产设备": 35,
+        "上游运维设备": 4,
+        "下游产品/业务": 76,
+        "下游销售渠道": 9,
+        "中游": 59,
+        "包含": 346
+      },
+      "adjacentNonContainSteps": 86,
+      "generatedPathEdges": 86,
+      "sampleAdjacentNonContain": [
+        {
+          "row": 12,
+          "source": "压电式六维力传感器",
+          "relation": "上游原材料",
+          "target": "压电式六维力传感器用压电陶瓷"
+        },
+        {
+          "row": 13,
+          "source": "应变片式六维力传感器",
+          "relation": "上游原材料",
+          "target": "应变片式六维力传感器用合金钢"
+        },
+        {
+          "row": 14,
+          "source": "应变片式六维力传感器",
+          "relation": "上游原材料",
+          "target": "应变片式六维力传感器用应变片"
+        },
+        {
+          "row": 24,
+          "source": "伺服电机",
+          "relation": "上游原材料",
+          "target": "伺服电机用漆包线"
+        },
+        {
+          "row": 25,
+          "source": "伺服电机",
+          "relation": "上游原材料",
+          "target": "伺服电机用钕铁硼永磁材料"
+        },
+        {
+          "row": 30,
+          "source": "RV减速器",
+          "relation": "上游原材料",
+          "target": "RV减速器用交叉滚子轴承"
+        },
+        {
+          "row": 31,
+          "source": "RV减速器",
+          "relation": "上游原材料",
+          "target": "RV减速器用摆线轮"
+        },
+        {
+          "row": 32,
+          "source": "RV减速器",
+          "relation": "上游原材料",
+          "target": "RV减速器用滚针轴承"
+        },
+        {
+          "row": 33,
+          "source": "RV减速器",
+          "relation": "上游原材料",
+          "target": "行星齿轮"
+        },
+        {
+          "row": 34,
+          "source": "RV减速器",
+          "relation": "上游原材料",
+          "target": "针齿壳"
+        },
+        {
+          "row": 35,
+          "source": "RV减速器",
+          "relation": "上游生产设备",
+          "target": "RV减速器磨齿机"
+        },
+        {
+          "row": 36,
+          "source": "摆线针轮减速器",
+          "relation": "上游原材料",
+          "target": "摆线针轮减速器用摆线轮"
+        },
+        {
+          "row": 37,
+          "source": "摆线针轮减速器",
+          "relation": "上游原材料",
+          "target": "输入机构"
+        },
+        {
+          "row": 38,
+          "source": "摆线针轮减速器",
+          "relation": "上游原材料",
+          "target": "针轮"
+        },
+        {
+          "row": 40,
+          "source": "谐波减速器",
+          "relation": "上游原材料",
+          "target": "刚轮"
+        },
+        {
+          "row": 41,
+          "source": "谐波减速器",
+          "relation": "上游原材料",
+          "target": "柔性轴承"
+        },
+        {
+          "row": 42,
+          "source": "谐波减速器",
+          "relation": "上游原材料",
+          "target": "柔轮"
+        },
+        {
+          "row": 43,
+          "source": "谐波减速器",
+          "relation": "上游原材料",
+          "target": "波发生器"
+        },
+        {
+          "row": 44,
+          "source": "谐波减速器",
+          "relation": "上游原材料",
+          "target": "谐波减速器用薄壁轴承"
+        },
+        {
+          "row": 77,
+          "source": "全驱动灵巧手",
+          "relation": "上游原材料",
+          "target": "全驱动灵巧手用碳纤维"
+        }
+      ],
+      "decision": "use_generated_real_edges"
+    },
+    {
+      "key": "aerospace",
+      "title": "航空航天",
+      "sheet": "图谱_航空航天",
+      "pathRows": 124,
+      "lengthDistribution": {
+        "3": 22,
+        "4": 52,
+        "5": 29,
+        "6": 16,
+        "7": 5
+      },
+      "relationCounts": {
+        "上游原材料": 88,
+        "上游技术服务": 3,
+        "下游产品/业务": 20,
+        "中游": 124,
+        "包含": 315
+      },
+      "adjacentNonContainSteps": 111,
+      "generatedPathEdges": 43,
+      "sampleAdjacentNonContain": [
+        {
+          "row": 2,
+          "source": "航天器",
+          "relation": "上游原材料",
+          "target": "宇航电源"
+        },
+        {
+          "row": 3,
+          "source": "航天器",
+          "relation": "上游原材料",
+          "target": "航天发动机"
+        },
+        {
+          "row": 3,
+          "source": "航天发动机",
+          "relation": "上游原材料",
+          "target": "喷管组件"
+        },
+        {
+          "row": 4,
+          "source": "航天器",
+          "relation": "上游原材料",
+          "target": "航天发动机"
+        },
+        {
+          "row": 4,
+          "source": "航天发动机",
+          "relation": "上游原材料",
+          "target": "推力室"
+        },
+        {
+          "row": 5,
+          "source": "航天器",
+          "relation": "上游原材料",
+          "target": "航天发动机"
+        },
+        {
+          "row": 5,
+          "source": "航天发动机",
+          "relation": "上游原材料",
+          "target": "点火装置"
+        },
+        {
+          "row": 6,
+          "source": "航天器",
+          "relation": "上游原材料",
+          "target": "航天发动机"
+        },
+        {
+          "row": 6,
+          "source": "航天发动机",
+          "relation": "上游原材料",
+          "target": "燃烧室"
+        },
+        {
+          "row": 7,
+          "source": "航天器",
+          "relation": "上游原材料",
+          "target": "航天电子系统"
+        },
+        {
+          "row": 8,
+          "source": "人造卫星",
+          "relation": "上游原材料",
+          "target": "GNSS板卡"
+        },
+        {
+          "row": 9,
+          "source": "人造卫星",
+          "relation": "上游原材料",
+          "target": "卫星接收天线"
+        },
+        {
+          "row": 10,
+          "source": "人造卫星",
+          "relation": "上游原材料",
+          "target": "卫星部件"
+        },
+        {
+          "row": 11,
+          "source": "人造卫星",
+          "relation": "上游原材料",
+          "target": "定位芯片"
+        },
+        {
+          "row": 12,
+          "source": "人造卫星",
+          "relation": "上游技术服务",
+          "target": "卫星设计"
+        },
+        {
+          "row": 13,
+          "source": "人造卫星",
+          "relation": "下游产品/业务",
+          "target": "卫星通信服务"
+        },
+        {
+          "row": 14,
+          "source": "人造卫星",
+          "relation": "下游产品/业务",
+          "target": "卫星通信设备"
+        },
+        {
+          "row": 15,
+          "source": "人造卫星",
+          "relation": "下游产品/业务",
+          "target": "卫星通信设备"
+        },
+        {
+          "row": 16,
+          "source": "人造卫星",
+          "relation": "下游产品/业务",
+          "target": "卫星通信设备"
+        },
+        {
+          "row": 24,
+          "source": "运载火箭",
+          "relation": "上游原材料",
+          "target": "火箭动力装置"
+        }
+      ],
+      "decision": "use_generated_real_edges"
+    },
+    {
+      "key": "gold",
+      "title": "黄金",
+      "sheet": "图谱_黄金",
+      "pathRows": 140,
+      "lengthDistribution": {
+        "2": 112,
+        "3": 28
+      },
+      "relationCounts": {
+        "上游原材料": 29,
+        "上游技术服务": 26,
+        "上游生产设备": 42,
+        "上游运维设备": 2,
+        "下游产品/业务": 25,
+        "下游销售渠道": 8,
+        "中游": 8,
+        "包含": 168
+      },
+      "adjacentNonContainSteps": 0,
+      "generatedPathEdges": 0,
+      "sampleAdjacentNonContain": [],
+      "decision": "retain_empty_state"
+    },
+    {
+      "key": "silver",
+      "title": "白银",
+      "sheet": "图谱_白银",
+      "pathRows": 147,
+      "lengthDistribution": {
+        "2": 126,
+        "3": 21
+      },
+      "relationCounts": {
+        "上游原材料": 29,
+        "上游技术服务": 20,
+        "上游生产设备": 35,
+        "上游运维设备": 2,
+        "下游产品/业务": 34,
+        "下游销售渠道": 7,
+        "中游": 20,
+        "包含": 168
+      },
+      "adjacentNonContainSteps": 0,
+      "generatedPathEdges": 0,
+      "sampleAdjacentNonContain": [],
+      "decision": "retain_empty_state"
+    },
+    {
+      "key": "compute",
+      "title": "算力",
+      "sheet": "图谱_算力",
+      "pathRows": 310,
+      "lengthDistribution": {
+        "2": 105,
+        "3": 123,
+        "4": 60,
+        "5": 22
+      },
+      "relationCounts": {
+        "上游原材料": 128,
+        "上游技术服务": 52,
+        "上游生产设备": 28,
+        "下游产品/业务": 24,
+        "下游销售渠道": 9,
+        "中游": 156,
+        "包含": 532
+      },
+      "adjacentNonContainSteps": 87,
+      "generatedPathEdges": 37,
+      "sampleAdjacentNonContain": [
+        {
+          "row": 157,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光学被动组件"
+        },
+        {
+          "row": 158,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光学被动组件"
+        },
+        {
+          "row": 159,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光学被动组件"
+        },
+        {
+          "row": 160,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光学被动组件"
+        },
+        {
+          "row": 161,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光引擎"
+        },
+        {
+          "row": 162,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 163,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 164,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 165,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 166,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 167,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 168,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 169,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 170,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 171,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 172,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 173,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 174,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 175,
+          "source": "光模块",
+          "relation": "上游原材料",
+          "target": "光芯片"
+        },
+        {
+          "row": 176,
+          "source": "光模块",
+          "relation": "上游生产设备",
+          "target": "光模块制造设备"
+        }
+      ],
+      "decision": "use_generated_real_edges"
+    },
+    {
+      "key": "storage_chip",
+      "title": "存储芯片",
+      "sheet": "图谱_存储芯片",
+      "pathRows": 204,
+      "lengthDistribution": {
+        "2": 188,
+        "3": 16
+      },
+      "relationCounts": {
+        "上游原材料": 45,
+        "上游技术服务": 23,
+        "上游生产设备": 40,
+        "下游产品/业务": 56,
+        "下游销售渠道": 11,
+        "中游": 56,
+        "包含": 193
+      },
+      "adjacentNonContainSteps": 27,
+      "generatedPathEdges": 27,
+      "sampleAdjacentNonContain": [
+        {
+          "row": 150,
+          "source": "DRAM",
+          "relation": "上游原材料",
+          "target": "电容介质材料"
+        },
+        {
+          "row": 151,
+          "source": "DRAM",
+          "relation": "上游原材料",
+          "target": "高介电常数材料"
+        },
+        {
+          "row": 152,
+          "source": "DRAM",
+          "relation": "上游生产设备",
+          "target": "深沟槽刻蚀设备"
+        },
+        {
+          "row": 156,
+          "source": "HBM",
+          "relation": "上游原材料",
+          "target": "TSV材料"
+        },
+        {
+          "row": 157,
+          "source": "HBM",
+          "relation": "上游原材料",
+          "target": "微凸块材料"
+        },
+        {
+          "row": 158,
+          "source": "HBM",
+          "relation": "上游原材料",
+          "target": "硅中介层"
+        },
+        {
+          "row": 159,
+          "source": "HBM",
+          "relation": "上游生产设备",
+          "target": "混合键合设备"
+        },
+        {
+          "row": 160,
+          "source": "HBM",
+          "relation": "下游产品/业务",
+          "target": "AI训练服务器"
+        },
+        {
+          "row": 161,
+          "source": "HBM",
+          "relation": "下游产品/业务",
+          "target": "高性能计算服务器"
+        },
+        {
+          "row": 162,
+          "source": "HBM",
+          "relation": "下游产品/业务",
+          "target": "高端显卡"
+        },
+        {
+          "row": 167,
+          "source": "LPDDR",
+          "relation": "下游产品/业务",
+          "target": "移动终端"
+        },
+        {
+          "row": 168,
+          "source": "LPDDR",
+          "relation": "下游产品/业务",
+          "target": "轻薄笔记本"
+        },
+        {
+          "row": 169,
+          "source": "LPDDR",
+          "relation": "下游产品/业务",
+          "target": "高端平板终端"
+        },
+        {
+          "row": 170,
+          "source": "EEPROM",
+          "relation": "下游产品/业务",
+          "target": "医疗设备参数存储"
+        },
+        {
+          "row": 171,
+          "source": "EEPROM",
+          "relation": "下游产品/业务",
+          "target": "计量表计数据存储"
+        },
+        {
+          "row": 172,
+          "source": "EEPROM",
+          "relation": "下游产品/业务",
+          "target": "车规MCU配置存储"
+        },
+        {
+          "row": 176,
+          "source": "NAND Flash",
+          "relation": "下游产品/业务",
+          "target": "UFS模组"
+        },
+        {
+          "row": 177,
+          "source": "3D NAND",
+          "relation": "上游原材料",
+          "target": "字线沉积材料"
+        },
+        {
+          "row": 178,
+          "source": "3D NAND",
+          "relation": "上游生产设备",
+          "target": "阶梯覆盖沉积设备"
+        },
+        {
+          "row": 183,
+          "source": "NOR Flash",
+          "relation": "上游技术服务",
+          "target": "低功耗设计IP"
+        }
+      ],
+      "decision": "use_generated_real_edges"
+    }
+  ],
+  "conclusion": {
+    "gold": "140 条路径行全部只含分类起点与包含后代，无相邻非包含步骤；保留 0 边空状态。",
+    "silver": "147 条路径行全部只含分类起点与包含后代，无相邻非包含步骤；保留 0 边空状态。"
+  }
+}
